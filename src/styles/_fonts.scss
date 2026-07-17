@@ -1,0 +1,48 @@
+@font-face {
+  font-family: DepartureMono;
+  src: url("$fonts/DepartureMono-Regular.woff") format("woff");
+}
+
+@mixin font-xxl {
+  font-size: var(--font-size-xxl);
+  letter-spacing: var(--letter-spacing-xxl);
+}
+@mixin font-xl {
+  font-size: var(--font-size-xl);
+  letter-spacing: var(--letter-spacing-xl);
+}
+@mixin font-lg {
+  font-size: var(--font-size-lg);
+  letter-spacing: var(--letter-spacing-lg);
+}
+@mixin font-md {
+  font-size: var(--font-size-md);
+  letter-spacing: var(--letter-spacing-md);
+}
+@mixin font-sm {
+  font-size: var(--font-size-sm);
+  letter-spacing: var(--letter-spacing-sm);
+}
+@mixin font-xs {
+  font-size: var(--font-size-xs);
+  letter-spacing: var(--letter-spacing-xs);
+}
+
+.size--xxl {
+  @include font-xxl;
+}
+.size--xl {
+  @include font-xl;
+}
+.size--lg {
+  @include font-lg;
+}
+.size--md {
+  @include font-md;
+}
+.size--sm {
+  @include font-sm;
+}
+.size--xs {
+  @include font-xs;
+}

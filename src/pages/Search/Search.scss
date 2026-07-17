@@ -1,0 +1,68 @@
+@use "../../styles/fonts" as *;
+
+#search {
+  ul {
+    margin-bottom: 3em;
+
+    button {
+      text-align: left;
+    }
+  }
+
+  .label-input {
+    margin: 0 0 3rem;
+    text-transform: uppercase;
+    position: relative;
+  }
+
+  .input-wrapper {
+    margin-bottom: 2em;
+
+    input[type="text"] {
+      position: relative;
+      background-color: var(--input-bg);
+      border: none;
+      border-bottom: 2px solid var(--input-border);
+      outline: none;
+      display: block;
+      width: calc(100% + 4em);
+      margin: 0 -2em;
+      padding: 1em 4.5em 1em 2em;
+      box-sizing: border-box;
+      caret-color: var(--fg);
+      color: var(--fg);
+      font-family: inherit;
+      font-size: var(--font-size-md);
+    }
+  }
+}
+
+.delete-button {
+  @include font-md();
+
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  vertical-align: middle;
+
+  height: 1.5em;
+  width: 1.5em;
+  padding: 0 6px 2px 0;
+
+  position: absolute;
+  bottom: 1em;
+  right: 0;
+  letter-spacing: -6px;
+
+  &::after {
+    border-bottom: none;
+  }
+
+  &--small {
+    letter-spacing: -10px;
+    padding: 0 10px 2px 0;
+    position: absolute;
+    top: 8px;
+    right: 0;
+  }
+}

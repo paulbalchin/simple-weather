@@ -1,0 +1,74 @@
+@use "../../styles/fonts" as *;
+
+#forecast {
+  ul {
+    li {
+      margin-bottom: 2em;
+    }
+  }
+  p.forecast-next, // the next 0-6 hours.
+  p.forecast-later, // the next 6-12 hours.
+  p.forecast-tomorrow {
+    @include font-sm();
+
+    line-height: 1.4;
+    padding-left: 2ch;
+    position: relative;
+
+    &::after {
+      content: "▓▒▒▒▒▒";
+      color: var(--accent);
+      overflow: hidden;
+      line-height: 1; // Eliminates breaks between accent blocks.
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 10.5px;
+      word-break: break-all;
+    }
+  }
+
+  p.forecast-later {
+    &::after {
+      content: "▒▒░░░░";
+    }
+  }
+
+  p.forecast-tomorrow {
+    &::after {
+      content: "▒░░░░";
+    }
+  }
+
+  .label-value {
+    &__temperature .value {
+      line-height: 0.8 !important;
+    }
+
+    &__conditions .value {
+      line-height: 1.2 !important;
+    }
+
+    &__options {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 0rem;
+    }
+
+    .value {
+      display: block;
+      line-height: 1;
+    }
+  }
+
+  .columns-2 {
+    display: flex;
+    gap: 2rem;
+
+    & > div {
+      width: 50%;
+    }
+  }
+}

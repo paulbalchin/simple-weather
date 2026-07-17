@@ -1,0 +1,133 @@
+import { useContext, useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { CitiesContext, SelectedCityIdContext } from "../contexts";
+import { type City, SEARCH_CITY_URL } from "../utilities";
+
+import "./Search/Search.scss";
+
+import { ErrorMessage, SearchInput, ListRecentSelections, ListSearchResults } from "./Search/";
+import { Loading, PageHeader } from "../components";
+
+type SearchResultsData = {
+  results: Array<City>;
+  generationtime_ms: number;
+};
+
+export function Search() {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | undefined>(undefined);
+  const [searchText, setSearchText] = useState("");
+  const [searchResultsData, setSearchResultsData] = useState<SearchResultsData | undefined>(
+    undefined,
+  );
+  const { cities, setCities } = useContext(CitiesContext);
+  const { setSelectedCityId } = useContext(SelectedCityIdContext);
+
+  const inputRef = useRef<HTMLInputElement>(null);
+  const navigate = useNavigate();
+
+  const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement, Element>) => {
+    setSearchText(e.target.value);
+    setError(undefined);
+  };
+
+  const handleDeleteInput = () => {
+    setSearchText("");
+    setSearchResultsData(undefined);
+    setError(undefined);
+    inputRef.current?.focus();
+  };
+
+  const handleClickRecentCity = function (cityId: number) {
+    setSelectedCityId(cityId);
+    navigate("/");
+  };
+
+  const handleSubmit = async (event: React.SubmitEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setSearchResultsData(undefined);
+
+    if (searchText.length === 0) {
+      return false;
+    }
+
+    setLoading(true);
+    setError(undefined);
+
+    try {
+      const response = await fetch(`${SEARCH_CITY_URL}${searchText}`);
+      const json = await response.json();
+      // Open-Meteo doesn't "throw" an error if no cities are found, it just returns {generationtime_ms: number}.
+      // A successful request returns {results: [], generationtime_ms: number}
+      if (json?.results) {
+        setLoading(false);
+        setSearchResultsData(json);
+        setError(undefined);
+      } else {
+        setLoading(false);
+        setSearchResultsData(undefined);
+        setError(`Try entering “City” or “City, Country”.`);
+      }
+    } catch (error: any) {
+      setLoading(false);
+      setSearchResultsData(undefined);
+      setError(error.reason);
+    }
+  };
+
+  const handleClickResultsCity = function (city: City) {
+    if (cities) {
+      const duplicateCity = cities.find((c: City) => c.id === city.id);
+
+      // If duplicateCity is true, then simply load that city without modifying `cities`,
+      // else if duplicateCity is false, then prepend the new city.
+      if (!duplicateCity) {
+        const newCities = [...cities];
+        newCities.unshift(city);
+        setCities(newCities);
+      }
+    } else {
+      setCities([city]);
+    }
+
+    setSelectedCityId(city.id);
+    navigate("/");
+  };
+
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, []);
+
+  const handleClickTryAgain = () => {
+    setError(undefined);
+    inputRef.current?.focus();
+  };
+
+  return (
+    <>
+      <PageHeader title="Search" />
+
+      <div id="search">
+        <SearchInput
+          onSubmitForm={handleSubmit}
+          inputRef={inputRef}
+          searchText={searchText}
+          onChangeInput={handleChangeInput}
+          onDelete={handleDeleteInput}
+        />
+
+        {cities?.length > 0 && !loading && searchText.length === 0 && (
+          <ListRecentSelections cities={cities} onClick={handleClickRecentCity} />
+        )}
+
+        {searchText.length > 0 && !loading && !error && (
+          <ListSearchResults cities={searchResultsData?.results} onClick={handleClickResultsCity} />
+        )}
+
+        {!loading && error && <ErrorMessage onClick={handleClickTryAgain} />}
+
+        {loading && <Loading />}
+      </div>
+    </>
+  );
+}

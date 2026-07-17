@@ -1,0 +1,72 @@
+:root {
+  --amber: #ffa133;
+  --pumpkin: #e47b1a;
+  --pumpkin-dark: #b95e09;
+  --flux-dark: #a0994b;
+  --flux: #c8be50;
+  --foam: #bccabb;
+  --enamel: #eeeeee;
+  --aluminum: #cccccc;
+  --cement: #c0c0c0;
+  --ash: #8e8e8e;
+  --mud: #8a8a6f;
+  --clay: #6c6c58;
+  --smoke: #666666;
+  --dark: #444444;
+  --soot: #333333;
+  --carbon: #222222;
+  --black: #141414;
+  --accent: var(--amber);
+  --fg: var(--dark);
+  --bg: var(--enamel);
+}
+
+:root {
+  --font-size-xxl: 121px;
+  --letter-spacing-xxl: -11px;
+  --line-height-xxl: 0.8;
+  --font-size-xl: 88px;
+  --letter-spacing-xl: -8px;
+  --line-height-xl: 0.8;
+  --font-size-lg: 55px;
+  --letter-spacing-lg: -5px;
+  --font-size-md: 22px;
+  --font-size-sm: 16.5px;
+  --font-size-xs: 11px;
+}
+
+body.light-theme {
+  --bg: var(--enamel);
+  --fg: var(--dark);
+  --accent: var(--flux);
+  --accent-dark: var(--flux);
+  --accent-inverse: var(--pumpkin);
+  --bold: var(--black);
+  --input-bg: #f6f6f6;
+  --input-border: var(--foam);
+  --link: var(--black);
+  --link-border: var(--foam);
+  --link-hover-bg: var(--foam);
+  --link-hover-fg: var(--fg);
+  --mark: var(--flux);
+  --mark-app: var(--amber);
+  --mask: var(--foam);
+}
+
+body.dark-theme {
+  --bg: var(--carbon);
+  --fg: var(--cement);
+  --accent: var(--amber);
+  --accent-dark: var(--pumpkin-dark);
+  --accent-inverse: var(--flux);
+  --bold: var(--fg);
+  --input-bg: var(--black);
+  --input-border: var(--pumpkin-dark);
+  --link: var(--fg);
+  --link-border: var(--pumpkin-dark);
+  --link-hover-bg: var(--pumpkin-dark);
+  --link-hover-fg: var(--bg);
+  --mark: var(--pumpkin-dark);
+  --mark-app: var(--flux);
+  --mask: var(--pumpkin-dark);
+}

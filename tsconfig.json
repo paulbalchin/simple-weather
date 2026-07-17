@@ -1,0 +1,10 @@
+{
+  "files": [],
+  "references": [{ "path": "./tsconfig.app.json" }, { "path": "./tsconfig.node.json" }],
+  "compilerOptions": {
+    // https://stackoverflow.com/questions/50234481/typescript-2-8-3-type-must-have-a-symbol-iterator-method-that-returns-an-iterato
+    "lib": ["es5", "es6", "dom", "dom.iterable"],
+    // https://github.com/carbon-design-system/carbon/tree/main/packages/react#typescript
+    "skipLibCheck": true
+  }
+}

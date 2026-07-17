@@ -1,0 +1,129 @@
+@use "./fonts" as *;
+
+body {
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: DepartureMono, CommitMono, Consolas, monospace;
+  @include font-sm();
+  line-height: 1;
+  margin: 2rem 2rem;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+a,
+.as-a,
+button {
+  background: transparent;
+  color: var(--link);
+  cursor: pointer;
+  min-width: 1.5em;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-bottom: 2px solid var(--link-border);
+  }
+
+  &:focus,
+  &:focus-visible {
+    background-color: var(--link-hover-bg);
+    color: var(--link-hover-fg);
+    outline: 2px solid var(--fg);
+    outline-offset: 2px;
+  }
+  &:hover {
+    background-color: var(--link-hover-bg);
+    color: var(--link-hover-fg);
+  }
+}
+
+b {
+  color: var(--bold);
+  font-weight: normal;
+  text-shadow: 0 1px 0 var(--bold);
+}
+
+mark {
+  background-color: var(--mark);
+  margin: 0px -0.2em;
+  padding: 0 0.2em;
+
+  &.app-version {
+    background-color: var(--mark-app);
+  }
+}
+
+p {
+  margin: 0 0 1rem 0;
+
+  // If "only" type.
+  &:last-of-type:first-of-type {
+    margin-bottom: 1em;
+  }
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+input[type="radio"] {
+  cursor: pointer;
+  position: relative;
+
+  height: 1px;
+  margin: 0;
+  width: 1px;
+  visibility: hidden;
+
+  &::before {
+    content: "□";
+    @include font-md();
+    color: var(--fg);
+    padding: 0 1ch;
+
+    position: relative;
+    top: 1px;
+    visibility: visible;
+  }
+  &:checked::before {
+    content: "■";
+    @include font-md();
+
+    // margin-left: 1em;
+    visibility: visible;
+  }
+
+  + label {
+    margin-left: 3ch;
+  }
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 1em 0 2em;
+
+  li {
+    margin: 0 0 1em;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+}

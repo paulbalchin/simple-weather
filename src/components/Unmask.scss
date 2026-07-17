@@ -1,0 +1,6 @@
+.mask {
+  color: var(--mask);
+  word-break: break-all;
+  // Removes the <1px space between blocks.
+  letter-spacing: -1px;
+}
