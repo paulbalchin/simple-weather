@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { CitiesContext, SelectedCityIdContext } from "../contexts";
 import { type City, SEARCH_CITY_URL } from "../utilities";
@@ -35,7 +35,7 @@ export function Search() {
     setSearchText("");
     setSearchResultsData(undefined);
     setError(undefined);
-    inputRef.current?.focus();
+    inputRef.current?.blur();
   };
 
   const handleClickRecentCity = function (cityId: number) {
@@ -57,14 +57,16 @@ export function Search() {
     try {
       const response = await fetch(`${SEARCH_CITY_URL}${searchText}`);
       const json = await response.json();
+      setLoading(false);
+      // Hides the virtual keyboard on touch devices.
+      inputRef.current?.blur();
+
       // Open-Meteo doesn't "throw" an error if no cities are found, it just returns {generationtime_ms: number}.
       // A successful request returns {results: [], generationtime_ms: number}
       if (json?.results) {
-        setLoading(false);
         setSearchResultsData(json);
         setError(undefined);
       } else {
-        setLoading(false);
         setSearchResultsData(undefined);
         setError(`Try entering “City” or “City, Country”.`);
       }
@@ -93,10 +95,6 @@ export function Search() {
     setSelectedCityId(city.id);
     navigate("/");
   };
-
-  useEffect(() => {
-    inputRef.current?.focus();
-  }, []);
 
   const handleClickTryAgain = () => {
     setError(undefined);
