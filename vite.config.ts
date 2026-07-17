@@ -6,6 +6,7 @@ import { resolve } from "path";
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  base: "/simple-weather/",
   define: {
     // Injects the version as a string constant
     "import.meta.env.VITE_APP_VERSION": JSON.stringify(pkg.version),

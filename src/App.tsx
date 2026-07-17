@@ -1,12 +1,10 @@
-import { createBrowserRouter } from "react-router";
-import { RouterProvider } from "react-router/dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import {
   CitiesProvider,
   ForecastProvider,
   LoadingProvider,
   SelectedCityIdProvider,
   ThemeProvider,
-  TimeFormatProvider,
   TimestampProvider,
   UnitsProvider,
 } from "./contexts";
@@ -21,46 +19,26 @@ import { About } from "./pages/About";
 import { Sort } from "./pages/Sort";
 
 function App() {
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <Forecast />,
-    },
-    {
-      path: "/nav",
-      element: <Nav />,
-    },
-    {
-      path: "/search",
-      element: <Search />,
-    },
-    {
-      path: "/sort",
-      element: <Sort />,
-    },
-    {
-      path: "/about",
-      element: <About />,
-    },
-    {
-      path: "/settings",
-      element: <Settings />,
-    },
-  ]);
-
   return (
     <CitiesProvider>
       <LoadingProvider>
         <ForecastProvider>
           <SelectedCityIdProvider>
             <ThemeProvider>
-              <TimeFormatProvider>
-                <TimestampProvider>
-                  <UnitsProvider>
-                    <RouterProvider router={router} />
-                  </UnitsProvider>
-                </TimestampProvider>
-              </TimeFormatProvider>
+              <TimestampProvider>
+                <UnitsProvider>
+                  <BrowserRouter basename="/simple-weather/">
+                    <Routes>
+                      <Route path="/" element={<Forecast />} />
+                      <Route path="/nav" element={<Nav />} />
+                      <Route path="/search" element={<Search />} />
+                      <Route path="/sort" element={<Sort />} />
+                      <Route path="/about" element={<About />} />
+                      <Route path="/settings" element={<Settings />} />
+                    </Routes>
+                  </BrowserRouter>
+                </UnitsProvider>
+              </TimestampProvider>
             </ThemeProvider>
           </SelectedCityIdProvider>
         </ForecastProvider>

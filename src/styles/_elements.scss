@@ -1,13 +1,22 @@
 @use "./fonts" as *;
 
 body {
-  background-color: var(--bg);
-  color: var(--fg);
-  font-family: DepartureMono, CommitMono, Consolas, monospace;
   @include font-sm();
+  font-family: DepartureMono, Consolas, monospace;
+
+  background-color: var(--aluminum);
+  color: var(--fg);
   line-height: 1;
-  margin: 2rem 2rem;
+  margin: 0 auto;
   padding: 0;
+  max-width: 720px;
+
+  #root {
+    background-color: var(--bg);
+    padding: 2em 2em;
+    margin: 0 auto;
+    min-height: calc(100vh - 4em);
+  }
 }
 
 a {

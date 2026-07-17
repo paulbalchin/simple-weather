@@ -7,6 +7,5 @@ export {
   SelectedCityIdProvider,
 } from "./SelectedCityIdContext.tsx";
 export { type Theme, ThemeContext, ThemeProvider } from "./ThemeContext.tsx";
-export { TimeFormatContext, TimeFormatProvider } from "./TimeFormatContext.tsx";
 export { type TimeStamp, TimestampContext, TimestampProvider } from "./TimestampContext.tsx";
 export { UnitsContext, UnitsProvider } from "./UnitsContext.tsx";
