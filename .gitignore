@@ -1,7 +1,8 @@
-build/
-docs/
-node_modules/
-.vscode/
+/build/
+/dist/
+/docs/
+/node_modules/
+/.vscode/
 *.log
 *.tmp
 **/.env
