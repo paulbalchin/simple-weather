@@ -105,6 +105,12 @@ export function Search() {
     <>
       <PageHeader title="Search" />
 
+      {cities.length === 0 && (
+        <p style={{ marginBottom: "3em" }}>
+          <b>No cities found.</b> Find and select a city to display.
+        </p>
+      )}
+
       <div id="search">
         <SearchInput
           onSubmitForm={handleSubmit}
