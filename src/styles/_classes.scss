@@ -1,5 +1,9 @@
 @use "../styles/fonts" as *;
 
+.disabled {
+  color: var(--disabled);
+}
+
 .label {
   @include font-xs;
   display: block;

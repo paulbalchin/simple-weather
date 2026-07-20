@@ -4,7 +4,7 @@ body {
   @include font-sm();
   font-family: DepartureMono, Consolas, monospace;
 
-  background-color: var(--aluminum);
+  background-color: var(--body);
   color: var(--fg);
   line-height: 1;
   margin: 0 auto;
@@ -12,7 +12,7 @@ body {
   max-width: 720px;
 
   #root {
-    background-color: var(--bg);
+    background-color: var(--root);
     padding: 2em 2em;
     margin: 0 auto;
     min-height: calc(100vh - 4em);
@@ -63,7 +63,7 @@ button {
 }
 
 b {
-  color: var(--bold);
+  color: var(--fg);
   font-weight: normal;
   text-shadow: 0 1px 0 var(--bold);
 }

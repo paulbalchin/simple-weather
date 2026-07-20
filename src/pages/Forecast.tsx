@@ -57,6 +57,8 @@ export function Forecast() {
       setTimestamp(new Date().toISOString());
       const current = getWeatherData(response[0]);
 
+      // console.log(`current`, current);
+
       setForecast(current);
     }
   };
