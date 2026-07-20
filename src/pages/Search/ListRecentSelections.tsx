@@ -1,6 +1,5 @@
 import React, { useEffect, useState, type ReactNode } from "react";
 
-import { Unmask } from "../../components/Unmask";
 import { getCityName } from "../../utilities";
 import type { Cities } from "../../contexts";
 import { Link } from "react-router";
@@ -38,9 +37,7 @@ export function ListRecentSelections({ cities, onClick }: ListRecentSelectionsTy
 
     return (
       <li key={city.id}>
-        <button onClick={() => onClick(city.id!)}>
-          <Unmask label={cityName} />
-        </button>
+        <button onClick={() => onClick(city.id!)}>{cityName}</button>
       </li>
     );
   });

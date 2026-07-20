@@ -11,7 +11,7 @@ export function About() {
           <li>
             <b>{import.meta.env.VITE_APP_NAME}</b>{" "}
             <mark className="app-version">
-              <Unmask label={import.meta.env.VITE_APP_VERSION} />
+              <Unmask label={`v${import.meta.env.VITE_APP_VERSION}`} />
             </mark>
           </li>
           <li>

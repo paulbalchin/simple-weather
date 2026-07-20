@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 import { CitiesContext, SelectedCityIdContext } from "../contexts";
 import { getCity } from "../utilities";
-import { Unmask } from "../components/Unmask";
 import { PageHeader } from "../components";
 
 export function Nav() {
@@ -17,23 +16,24 @@ export function Nav() {
 
       <div id="navigation" className="size--sm">
         <ul>
+          {city && (
+            <li>
+              <Link to="/">Forecast &gt; {city.name}</Link>
+            </li>
+          )}
+          {!city && (
+            <li>
+              <span className="disabled">Forecast: (city not selected)</span>
+            </li>
+          )}
           <li>
-            <Link to="/">{city && <Unmask label={`Forecast: ${city.name}`} />}</Link>
+            <Link to="/search">Search for cities</Link>
           </li>
           <li>
-            <Link to="/search">
-              <Unmask label="Search for cities" />
-            </Link>
+            <Link to="/settings">Settings</Link>
           </li>
           <li>
-            <Link to="/settings">
-              <Unmask label="Settings" />
-            </Link>
-          </li>
-          <li>
-            <Link to="/about">
-              <Unmask label="About" />
-            </Link>
+            <Link to="/about">About</Link>
           </li>
         </ul>
       </div>

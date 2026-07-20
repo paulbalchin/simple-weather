@@ -2,7 +2,6 @@ import { useContext } from "react";
 
 import { ThemeContext } from "../contexts";
 import { UnitsContext } from "../contexts";
-import { Unmask } from "../components/Unmask";
 import { PageHeader } from "../components";
 
 export function Settings() {
@@ -28,7 +27,7 @@ export function Settings() {
               }}
             />
             <label htmlFor="celsius" className="as-a">
-              <Unmask label="Celsius" />
+              Celsius
             </label>
           </li>
           <li>
@@ -43,7 +42,7 @@ export function Settings() {
               }}
             />
             <label htmlFor="fahrenheit" className="as-a">
-              <Unmask label="Fahrenheit" />
+              Fahrenheit
             </label>
           </li>
         </ul>
@@ -61,7 +60,7 @@ export function Settings() {
               }}
             />
             <label htmlFor="light" className="as-a">
-              <Unmask label="Light" />
+              Light
             </label>
           </li>
           <li>
@@ -76,7 +75,7 @@ export function Settings() {
               }}
             />
             <label htmlFor="dark" className="as-a">
-              <Unmask label="Dark" />
+              Dark
             </label>
           </li>
         </ul>
