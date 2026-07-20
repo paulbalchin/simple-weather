@@ -39,20 +39,6 @@ export function Now() {
   return (
     <ul className="size--md">
       <li className="columns-2 label-value">
-        <div className="label-value__temperature">
-          <span className="label">Temperature</span>{" "}
-          <span className="value size--xl">
-            {temperature}°<span className="visually-hidden">{units.temperature.label}</span>
-          </span>
-        </div>
-        <div className="label-value label-value__humidex">
-          <span className="label">Feels like</span>{" "}
-          <span className="value">
-            <Unmask label={`${feelsLike}`} />
-          </span>
-        </div>
-      </li>
-      <li className="columns-2 label-value">
         <div className="label-value__location">
           <span className="label">Location</span>{" "}
           <span className="value">
@@ -63,6 +49,20 @@ export function Now() {
           <span className="label">Time</span>{" "}
           <span className="value">
             <Unmask label={time} />
+          </span>
+        </div>
+      </li>
+      <li className="columns-2 label-value">
+        <div className="label-value__temperature">
+          <span className="label">Temperature</span>{" "}
+          <span className="value size--lg">
+            {temperature}°<span className="visually-hidden">{units.temperature.label}</span>
+          </span>
+        </div>
+        <div className="label-value label-value__humidex">
+          <span className="label">Feels like</span>{" "}
+          <span className="value">
+            <Unmask label={`${feelsLike}`} />
           </span>
         </div>
       </li>
