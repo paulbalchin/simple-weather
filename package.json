@@ -10,9 +10,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@base-ui/react": "^1.5.0",
-    "@carbon/icons-react": "^11.82.0",
-    "@carbon/react": "^1.109.0",
     "@dnd-kit/helpers": "^0.4.0",
     "@dnd-kit/react": "^0.4.0",
     "@dnd-kit/sortable": "^10.0.0",
@@ -23,12 +20,10 @@
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
     "react-router": "^7.15.1",
-    "react-router-dom": "^7.15.1",
-    "recharts": "^3.8.1"
+    "react-router-dom": "^7.15.1"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@recharts/devtools": "^0.0.14",
     "@types/luxon": "^3.7.1",
     "@types/node": "^24.12.4",
     "@types/react": "^19.2.14",
