@@ -9,9 +9,7 @@ import {
   UnitsProvider,
 } from "./contexts";
 
-// import { About, Forecast, Manage, Search, Settings } from "./pages";
 import { Forecast } from "./pages/Forecast";
-// import { Forecast } from "./pages/Forecast";
 import { Nav } from "./pages/Nav";
 import { Search } from "./pages/Search";
 import { Settings } from "./pages/Settings";
