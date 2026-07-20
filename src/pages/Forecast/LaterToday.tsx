@@ -155,7 +155,7 @@ export function LaterToday({}) {
     return (
       <>
         <Morning forecast={forecastOrder[0]} label={units.precipitation.label} />
-        <Afternoon n={1} forecast={forecastOrder[0]} label={units.precipitation.label} />
+        <Afternoon n={1} forecast={forecastOrder[1]} label={units.precipitation.label} />
       </>
     );
   }
