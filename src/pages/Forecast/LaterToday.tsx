@@ -148,7 +148,12 @@ export function LaterToday({}) {
   // if 0 = evening, then next 6 hours.
 
   if (forecastOrder[0].label === "Overnight") {
-    return <Overnight forecast={forecastOrder[0]} label={units.precipitation.label} />;
+    return (
+      <>
+        <Overnight forecast={forecastOrder[0]} label={units.precipitation.label} />
+        <Morning forecast={forecastOrder[1]} label={units.precipitation.label} />
+      </>
+    );
   }
 
   if (forecastOrder[0].label === "Morning") {
@@ -170,6 +175,11 @@ export function LaterToday({}) {
   }
 
   if (forecastOrder[0].label === "Evening") {
-    return <Evening n={0} forecast={forecastOrder[0]} label={units.precipitation.label} />;
+    return (
+      <>
+        <Evening n={0} forecast={forecastOrder[0]} label={units.precipitation.label} />
+        <Overnight forecast={forecastOrder[1]} label={units.precipitation.label} />
+      </>
+    );
   }
 }
